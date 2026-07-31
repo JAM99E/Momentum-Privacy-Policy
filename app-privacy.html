@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momentum — App Privacy questionnaire</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 6rem;
+    color: #16181d; background: #fff;
+  }
+  h1 { font-size: 1.9rem; line-height: 1.15; margin: 0 0 .4rem; letter-spacing: -.02em; }
+  h2 {
+    font-size: 1.15rem; margin: 2.6rem 0 .8rem; padding-bottom: .5rem;
+    border-bottom: 1px solid #e3e6ea;
+  }
+  h3 { font-size: 1rem; margin: 1.8rem 0 .5rem; }
+  .lede { color: #5a626e; margin: 0 0 2rem; }
+  .verdict {
+    display: inline-block; font-weight: 700; padding: .2rem .55rem;
+    border-radius: 5px; background: #e8f5cc; color: #3d4f10;
+  }
+  .verdict.no { background: #eceef1; color: #414852; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .7rem; border-bottom: 1px solid #e3e6ea; vertical-align: top; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: #6b7280; }
+  .scroll { overflow-x: auto; }
+  blockquote {
+    margin: 1.2rem 0; padding: .1rem 0 .1rem 1rem;
+    border-left: 3px solid #a3c644; color: #4a515c;
+  }
+  .warn {
+    margin: 1.2rem 0; padding: .9rem 1rem; border-radius: 8px;
+    background: #fdf4e7; border: 1px solid #f0d9b5; color: #5c4520;
+  }
+  code { background: #f1f3f5; padding: .12rem .3rem; border-radius: 4px; font-size: .9em; }
+  .quiet { color: #6b7280; font-size: .92rem; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8eaed; background: #0b0e13; }
+    h2 { border-color: #232936; }
+    .lede, .quiet, th { color: #949cab; }
+    td, th { border-color: #1c212b; }
+    .verdict { background: #2b3a12; color: #cbe98a; }
+    .verdict.no { background: #1e232d; color: #b6bdc8; }
+    blockquote { border-color: #a3c644; color: #b6bdc8; }
+    .warn { background: #2a2113; border-color: #4a3a1c; color: #e4cfa6; }
+    code { background: #1c212b; }
+  }
+</style>
+</head>
+<body>
+
+<h1>App Privacy questionnaire</h1>
+<p class="lede">
+  Answers for App Store Connect → App Privacy. <strong>Every answer below is
+  derived from the code</strong>, not from what a habit tracker typically does —
+  a six-lens audit traced each field from the app to the wire to the database.
+</p>
+
+<div class="warn">
+  This is the questionnaire — what to tick inside App Store Connect. It is not
+  the privacy policy. The policy is <code>docs/privacy.html</code>, which is the
+  page that gets hosted and linked from the store listing.
+</div>
+
+<p>
+  Getting this wrong is worse than getting it late: the answers appear on the
+  product page as the Privacy Nutrition Label, and a mismatch between the label
+  and observed behaviour is a rejection <em>and</em> a trust problem.
+</p>
+
+<h2>Does this app collect data? <span class="verdict">Yes</span></h2>
+
+<h2>Data types to declare</h2>
+<p>
+  All of the following are <strong>Linked to You</strong> — every row is keyed by
+  the Supabase user id — and all are used for <strong>App Functionality</strong>
+  only. None is used for Analytics, Advertising, Product Personalisation or
+  Developer Advertising.
+</p>
+
+<div class="scroll">
+<table>
+  <tr><th>Category</th><th>Type</th><th>Why it's collected</th></tr>
+  <tr><td>Contact Info</td><td><strong>Name</strong></td><td>From Sign in with Apple, shown in Settings</td></tr>
+  <tr><td>Contact Info</td><td><strong>Email Address</strong></td><td>From Sign in with Apple; may be a private-relay address</td></tr>
+  <tr><td>Identifiers</td><td><strong>User ID</strong></td><td>The Supabase account id every row hangs off</td></tr>
+  <tr><td>User Content</td><td><strong>Other User Content</strong></td><td>Habit names and units (free text), completion records</td></tr>
+</table>
+</div>
+
+<h3>Tracking: <span class="verdict no">No</span></h3>
+<p>
+  Momentum does not link any data to third-party data for advertising or
+  measurement, and contains no advertising identifier, no analytics SDK, no crash
+  reporter and no attribution framework. <strong>Do not</strong> enable App
+  Tracking Transparency — an ATT prompt in an app that does no tracking is itself
+  a review problem.
+</p>
+
+<h2>Health &amp; Fitness: <span class="verdict no">Not collected</span></h2>
+<p>This is the answer most likely to be got wrong, so the reasoning is worth stating.</p>
+<p>
+  Momentum <strong>reads</strong> five HealthKit types — step count,
+  walking/running distance, exercise minutes, active energy, and workouts (date
+  and coarse type only). It never writes: authorisation is requested with an
+  empty <code>toShare</code> set, and the entitlement carries no clinical-records
+  access.
+</p>
+<p>
+  <strong>None of it leaves the device.</strong> The readings are cached in a
+  local SwiftData table that appears in no wire type and no server table. Apple's
+  questionnaire asks what is <em>collected</em> — meaning transmitted off-device
+  or stored by the developer — and Health readings are neither.
+</p>
+<p>
+  <strong>What does leave</strong> is the conclusion: that you earned the badge
+  for covering 100&nbsp;km on foot, and the date. That is declared above as User
+  Content, and the privacy policy says so in plain words rather than claiming
+  nothing Health-related is transmitted.
+</p>
+<blockquote>
+  If a reviewer asks, the distinction is: no Health <em>data</em> is collected;
+  some Health-<em>derived</em> facts are, and they are disclosed.
+</blockquote>
+
+<div class="warn">
+  The app declares <code>NSHealthUpdateUsageDescription</code> even though it
+  never writes. That is required by the upload validator whenever the HealthKit
+  entitlement is present — it reasons from the entitlement, not the code. Its
+  presence is not evidence of a write path, and the string itself says so.
+</div>
+
+<h2>Also not collected</h2>
+<p class="quiet">
+  Location · Contacts · Photos or Video · Audio · Browsing History · Search
+  History · Purchases · Financial Info · Sensitive Info · Diagnostics · Product
+  Interaction · Advertising Data · Device ID · Coarse Location
+</p>
+
+<h2>The disclosure that matters most</h2>
+<p>
+  Habit names are <strong>free text</strong>, stored on the server in plain
+  readable form, alongside the exact record of which days each was and was not
+  completed.
+</p>
+<p>
+  A habit called “Take medication” plus its miss history is, in practice,
+  sensitive information about a person. It is not treated as a special category
+  by the questionnaire — it is User Content — but the privacy policy gives it its
+  own callout rather than a footnote, because a user deserves to know before they
+  type it.
+</p>
+<p><strong>Do not soften that section to make the label look tidier.</strong> It is the most important true thing on the page.</p>
+
+<h2>Third-party SDKs</h2>
+<p>
+  One: <strong>supabase-swift</strong> (auth, database, storage client). It is a
+  client library for our own backend, not an analytics or advertising SDK, and
+  collects nothing on its own behalf.
+</p>
+<p>
+  Supabase acts as a <strong>data processor</strong> — it stores the data so the
+  app can function and does not use it for its own purposes. If a Data Processing
+  Agreement or a DPO contact is added later, this is the section to update.
+</p>
+
+<h2>Account deletion</h2>
+<p>
+  Required to be in-app for any app offering account creation, and it is:
+  <strong>Settings → Delete Account</strong>. It calls a server function that
+  hard-deletes the <code>auth.users</code> row; every user-owned table cascades
+  from it.
+</p>
+<p>Two honest caveats, both stated in the privacy policy:</p>
+<ol>
+  <li><strong>Local data is not removed</strong> — deleting the account clears the server copy; the on-device copy goes when the app is deleted.</li>
+  <li><strong>Anonymous population counts do not change</strong> — they contain no identifiers and there is nothing in them to delete.</li>
+</ol>
+
+</body>
+</html>
