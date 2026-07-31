@@ -3,182 +3,183 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Momentum — App Privacy questionnaire</title>
+<title>Momentum — Privacy Policy</title>
 <style>
   :root { color-scheme: light dark; }
   body {
     font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 6rem;
+    max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 6rem;
     color: #16181d; background: #fff;
   }
-  h1 { font-size: 1.9rem; line-height: 1.15; margin: 0 0 .4rem; letter-spacing: -.02em; }
-  h2 {
-    font-size: 1.15rem; margin: 2.6rem 0 .8rem; padding-bottom: .5rem;
-    border-bottom: 1px solid #e3e6ea;
-  }
-  h3 { font-size: 1rem; margin: 1.8rem 0 .5rem; }
-  .lede { color: #5a626e; margin: 0 0 2rem; }
-  .verdict {
-    display: inline-block; font-weight: 700; padding: .2rem .55rem;
-    border-radius: 5px; background: #e8f5cc; color: #3d4f10;
-  }
-  .verdict.no { background: #eceef1; color: #414852; }
-  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .95rem; }
-  th, td { text-align: left; padding: .6rem .7rem; border-bottom: 1px solid #e3e6ea; vertical-align: top; }
-  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: #6b7280; }
-  .scroll { overflow-x: auto; }
-  blockquote {
-    margin: 1.2rem 0; padding: .1rem 0 .1rem 1rem;
-    border-left: 3px solid #a3c644; color: #4a515c;
-  }
-  .warn {
-    margin: 1.2rem 0; padding: .9rem 1rem; border-radius: 8px;
-    background: #fdf4e7; border: 1px solid #f0d9b5; color: #5c4520;
-  }
-  code { background: #f1f3f5; padding: .12rem .3rem; border-radius: 4px; font-size: .9em; }
-  .quiet { color: #6b7280; font-size: .92rem; }
   @media (prefers-color-scheme: dark) {
     body { color: #e8eaed; background: #0b0e13; }
-    h2 { border-color: #232936; }
-    .lede, .quiet, th { color: #949cab; }
-    td, th { border-color: #1c212b; }
-    .verdict { background: #2b3a12; color: #cbe98a; }
-    .verdict.no { background: #1e232d; color: #b6bdc8; }
-    blockquote { border-color: #a3c644; color: #b6bdc8; }
-    .warn { background: #2a2113; border-color: #4a3a1c; color: #e4cfa6; }
+    a { color: #c6f235; }
+    th { border-color: #2a2f3a !important; }
+    td { border-color: #1c212b !important; }
     code { background: #1c212b; }
   }
+  h1 { font-size: 1.9rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.2rem; margin-top: 2.5rem; }
+  .sub { opacity: .65; margin-top: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .93rem; }
+  th, td { text-align: left; padding: .5rem .6rem; vertical-align: top; }
+  th { border-bottom: 2px solid #d5d9e0; }
+  td { border-bottom: 1px solid #e8ebef; }
+  code { background: #f1f3f6; padding: .1rem .3rem; border-radius: 3px; font-size: .9em; }
+  .callout { border-left: 3px solid #c6a235; padding: .6rem 0 .6rem 1rem; margin: 1.4rem 0; }
+  table { display: block; overflow-x: auto; }
 </style>
 </head>
 <body>
 
-<h1>App Privacy questionnaire</h1>
-<p class="lede">
-  Answers for App Store Connect → App Privacy. <strong>Every answer below is
-  derived from the code</strong>, not from what a habit tracker typically does —
-  a six-lens audit traced each field from the app to the wire to the database.
-</p>
+<h1>Momentum — Privacy Policy</h1>
+<p class="sub">Last updated: 28 July 2026</p>
 
-<div class="warn">
-  This is the questionnaire — what to tick inside App Store Connect. It is not
-  the privacy policy. The policy is <code>docs/privacy.html</code>, which is the
-  page that gets hosted and linked from the store listing.
-</div>
+<p>Momentum is a habit tracker. This policy describes exactly what it collects, where
+that goes, and how to get rid of it. It is written to match what the app actually
+does — not what habit trackers generally do.</p>
 
-<p>
-  Getting this wrong is worse than getting it late: the answers appear on the
-  product page as the Privacy Nutrition Label, and a mismatch between the label
-  and observed behaviour is a rejection <em>and</em> a trust problem.
-</p>
+<h2>The short version</h2>
+<ul>
+  <li>Momentum requires an account, created with <strong>Sign in with Apple</strong>. There is no password.</li>
+  <li>Your habits and your record of completing them are stored on your device <em>and</em> on
+      our server, so they survive losing your phone and appear on your other devices.</li>
+  <li><strong>Apple Health data never leaves your device.</strong> Momentum reads it, and only
+      the resulting badges are stored on the server.</li>
+  <li>There is <strong>no advertising, no analytics, no tracking and no third-party data
+      sharing.</strong> Momentum does not use any advertising identifier.</li>
+  <li>You can delete your account, and everything attached to it, from inside the app.</li>
+</ul>
 
-<h2>Does this app collect data? <span class="verdict">Yes</span></h2>
+<h2>What Momentum collects</h2>
 
-<h2>Data types to declare</h2>
-<p>
-  All of the following are <strong>Linked to You</strong> — every row is keyed by
-  the Supabase user id — and all are used for <strong>App Functionality</strong>
-  only. None is used for Analytics, Advertising, Product Personalisation or
-  Developer Advertising.
-</p>
+<h3>Account details</h3>
+<p>When you sign in with Apple, Momentum receives and stores your <strong>name</strong> and
+<strong>email address</strong>. Apple offers these only on your first sign-in.</p>
+<p>If you choose Apple's <strong>Hide My Email</strong>, Momentum only ever sees the
+<code>@privaterelay.appleid.com</code> address — never your real one. The app shows you
+when that is the case. Momentum never receives your Apple ID password.</p>
 
-<div class="scroll">
+<h3>Your habits and your record</h3>
 <table>
-  <tr><th>Category</th><th>Type</th><th>Why it's collected</th></tr>
-  <tr><td>Contact Info</td><td><strong>Name</strong></td><td>From Sign in with Apple, shown in Settings</td></tr>
-  <tr><td>Contact Info</td><td><strong>Email Address</strong></td><td>From Sign in with Apple; may be a private-relay address</td></tr>
-  <tr><td>Identifiers</td><td><strong>User ID</strong></td><td>The Supabase account id every row hangs off</td></tr>
-  <tr><td>User Content</td><td><strong>Other User Content</strong></td><td>Habit names and units (free text), completion records</td></tr>
+  <tr><th>What</th><th>Detail</th></tr>
+  <tr><td>Habit name and unit</td><td>Free text you type, stored exactly as written</td></tr>
+  <tr><td>Habit settings</td><td>Type, target, schedule, reminder time, colour</td></tr>
+  <tr><td>Completions</td><td>Which habit, which day, how much, and whether it was done or skipped</td></tr>
+  <tr><td>Timestamps</td><td>The moment you tapped, and when each record was last changed</td></tr>
+  <tr><td>Awards</td><td>Which badges you have earned and when</td></tr>
+  <tr><td>Level and XP</td><td>Your level and total XP, so the app can show where you sit against everyone else</td></tr>
 </table>
+
+<div class="callout">
+<p><strong>Please read this one.</strong> Habit names are free text and are stored on our
+server in plain, readable form — as is the exact record of which days you did and did not
+complete each one.</p>
+<p>If you name a habit something you would not want associated with your account, that
+information is stored. A habit called “Take medication” alongside a record of the days you
+missed it is, in practice, sensitive information about you.</p>
+<p>Momentum does not read, analyse or share this — but it is not anonymous and it is not
+encrypted in a way that hides it from the service operator. If you would rather not store
+something in this form, give the habit a name that means something only to you.</p>
 </div>
 
-<h3>Tracking: <span class="verdict no">No</span></h3>
-<p>
-  Momentum does not link any data to third-party data for advertising or
-  measurement, and contains no advertising identifier, no analytics SDK, no crash
-  reporter and no attribution framework. <strong>Do not</strong> enable App
-  Tracking Transparency — an ATT prompt in an app that does no tracking is itself
-  a review problem.
-</p>
+<h3>Apple Health</h3>
+<p>If you connect Apple Health, Momentum reads five things, and only ever reads — it never
+writes anything back to Health:</p>
+<ul>
+  <li>Step count</li>
+  <li>Walking and running distance</li>
+  <li>Exercise minutes</li>
+  <li>Active energy burned</li>
+  <li>Workouts — only the date and the broad type, such as “walking”</li>
+</ul>
+<p>Momentum reads these as <strong>daily totals</strong>. It does not read heart rate, sleep,
+body measurements, clinical records, workout routes, or any location data.</p>
+<p><strong>None of this leaves your device.</strong> It is stored in Momentum's local
+database on your phone and used to work out whether you have earned a fitness badge.</p>
+<p>What does reach the server is the <strong>conclusion</strong>: for example, that you
+earned the badge for covering 100 km on foot, and the date you earned it. Your level and XP
+are also affected by fitness badges. So while no Health <em>readings</em> are transmitted,
+some Health-<em>derived</em> facts are. We would rather say so plainly than claim more than
+is true.</p>
+<p>If you decline Health access, every other part of the app works normally. Apple does not
+tell apps when Health permission has been refused, so fitness badges will simply sit at zero
+progress.</p>
 
-<h2>Health &amp; Fitness: <span class="verdict no">Not collected</span></h2>
-<p>This is the answer most likely to be got wrong, so the reasoning is worth stating.</p>
-<p>
-  Momentum <strong>reads</strong> five HealthKit types — step count,
-  walking/running distance, exercise minutes, active energy, and workouts (date
-  and coarse type only). It never writes: authorisation is requested with an
-  empty <code>toShare</code> set, and the entitlement carries no clinical-records
-  access.
-</p>
-<p>
-  <strong>None of it leaves the device.</strong> The readings are cached in a
-  local SwiftData table that appears in no wire type and no server table. Apple's
-  questionnaire asks what is <em>collected</em> — meaning transmitted off-device
-  or stored by the developer — and Health readings are neither.
-</p>
-<p>
-  <strong>What does leave</strong> is the conclusion: that you earned the badge
-  for covering 100&nbsp;km on foot, and the date. That is declared above as User
-  Content, and the privacy policy says so in plain words rather than claiming
-  nothing Health-related is transmitted.
-</p>
-<blockquote>
-  If a reviewer asks, the distinction is: no Health <em>data</em> is collected;
-  some Health-<em>derived</em> facts are, and they are disclosed.
-</blockquote>
+<h3>What Momentum does not collect</h3>
+<ul>
+  <li>No advertising identifier, and no tracking as Apple defines it. Momentum does not ask
+      for App Tracking Transparency permission because it does nothing that requires it.</li>
+  <li>No analytics, telemetry, crash reporting or session recording. There is no such
+      software in the app.</li>
+  <li>No location, contacts, photos, microphone or camera access.</li>
+  <li>No password — Sign in with Apple is the only way in.</li>
+  <li>No data is sold, rented, or shared with advertisers or data brokers. Ever.</li>
+</ul>
 
-<div class="warn">
-  The app declares <code>NSHealthUpdateUsageDescription</code> even though it
-  never writes. That is required by the upload validator whenever the HealthKit
-  entitlement is present — it reasons from the entitlement, not the code. Its
-  presence is not evidence of a write path, and the string itself says so.
-</div>
+<h2>Where your data is stored</h2>
+<p>On your device, and on servers operated by <strong>Supabase</strong>, which hosts the
+database and handles sign-in on our behalf. Supabase acts as a data processor: it stores the
+data so Momentum can function, and does not use it for its own purposes.</p>
+<p>As with any internet service, connecting to the server means your IP address is visible
+to that infrastructure. Momentum does not store your IP address in its own database or use
+it to build any profile of you.</p>
+<p>Access is enforced at the database level so that your account can only ever read and
+write its own rows.</p>
 
-<h2>Also not collected</h2>
-<p class="quiet">
-  Location · Contacts · Photos or Video · Audio · Browsing History · Search
-  History · Purchases · Financial Info · Sensitive Info · Diagnostics · Product
-  Interaction · Advertising Data · Device ID · Coarse Location
-</p>
+<h2>What other people can see</h2>
+<p>Momentum shows you how you compare with other users — your percentile, and how rare each
+award is. These figures are built from <strong>counts only</strong>: how many accounts sit at
+each level, and how many hold each badge.</p>
+<p>Those totals contain no names, no habits and no account identifiers, and there is no way
+to work backwards from them to an individual. <strong>No other user can see your habits,
+your record, your name or your email.</strong> Momentum has no profiles, no feed, no friends
+list and no sharing.</p>
 
-<h2>The disclosure that matters most</h2>
-<p>
-  Habit names are <strong>free text</strong>, stored on the server in plain
-  readable form, alongside the exact record of which days each was and was not
-  completed.
-</p>
-<p>
-  A habit called “Take medication” plus its miss history is, in practice,
-  sensitive information about a person. It is not treated as a special category
-  by the questionnaire — it is User Content — but the privacy policy gives it its
-  own callout rather than a footnote, because a user deserves to know before they
-  type it.
-</p>
-<p><strong>Do not soften that section to make the label look tidier.</strong> It is the most important true thing on the page.</p>
-
-<h2>Third-party SDKs</h2>
-<p>
-  One: <strong>supabase-swift</strong> (auth, database, storage client). It is a
-  client library for our own backend, not an analytics or advertising SDK, and
-  collects nothing on its own behalf.
-</p>
-<p>
-  Supabase acts as a <strong>data processor</strong> — it stores the data so the
-  app can function and does not use it for its own purposes. If a Data Processing
-  Agreement or a DPO contact is added later, this is the section to update.
-</p>
-
-<h2>Account deletion</h2>
-<p>
-  Required to be in-app for any app offering account creation, and it is:
-  <strong>Settings → Delete Account</strong>. It calls a server function that
-  hard-deletes the <code>auth.users</code> row; every user-owned table cascades
-  from it.
-</p>
-<p>Two honest caveats, both stated in the privacy policy:</p>
+<h2>Deleting your account</h2>
+<p>Settings → <strong>Delete Account</strong>. This permanently removes, from the server:</p>
+<ul>
+  <li>Your account and sign-in record</li>
+  <li>Your name and email</li>
+  <li>Every habit and every completion record</li>
+  <li>Every award you have earned</li>
+  <li>Your level and XP</li>
+</ul>
+<p>This cannot be undone.</p>
+<p><strong>Two honest caveats.</strong></p>
 <ol>
-  <li><strong>Local data is not removed</strong> — deleting the account clears the server copy; the on-device copy goes when the app is deleted.</li>
-  <li><strong>Anonymous population counts do not change</strong> — they contain no identifiers and there is nothing in them to delete.</li>
+  <li><strong>The data on your phone is not removed.</strong> Deleting your account removes
+      the server copy; your habits stay in the app on your device. Delete the app to remove
+      those as well.</li>
+  <li><strong>The anonymous totals do not change.</strong> The comparison figures described
+      above are counts taken at a point in time. They contain nothing identifying you, so
+      there is nothing in them to delete.</li>
 </ol>
+<p>You can also sign out without deleting anything. Signing out stops your data syncing and
+hides it in the app, but keeps it on the device for when you sign back in.</p>
+
+<h2>How long data is kept</h2>
+<p>For as long as your account exists. Momentum keeps your complete history rather than
+summarising it, because your streaks, XP and awards are all worked out from that history
+every time they are displayed — nothing is stored as a running total.</p>
+<p>Delete your account and it goes.</p>
+
+<h2>Children</h2>
+<p>Momentum is not directed at children under 13, and accounts are not knowingly created for
+them. If you believe a child has created an account, contact us and it will be removed.</p>
+
+<h2>Your rights</h2>
+<p>Depending on where you live, you may have the right to access, correct, export or erase
+your personal data, and to object to its processing. Account deletion is available directly
+in the app; for anything else, get in touch and we will respond.</p>
+
+<h2>Changes to this policy</h2>
+<p>If this policy changes in a way that affects what is collected or where it goes, the app
+will be updated and the date at the top of this page will change.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy, or about your data: <a href="mailto:jamie_hardie@icloud.com">jamie_hardie@icloud.com</a></p>
+<p><em>Momentum is made by an independent developer.</em></p>
 
 </body>
 </html>
